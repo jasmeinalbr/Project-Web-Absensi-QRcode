@@ -115,20 +115,20 @@ function LoginPage() {
     sx={{
       height: '100vh',
       backgroundColor: '#0F163B',
-      padding: { xs: '20px', sm: '40px', md: '80px' }, // Responsif padding
+      padding: { xs: '70px', sm: '40px', md: '80px' }, // Responsif padding
     }}
     >
       <Box
         sx={{
           flex: { xs: 0.5, sm: 1, md: 1.5 },
           padding: { sm: '20px 60px 20px 0px', md: '20px 60px 20px 0px', lg: '20px 60px 20px 0px'}, // Responsif padding
-          display: 'flex',
+          display: { xs: 'none', sm: 'none', md: 'flex' }, // Disembunyikan di layar xs
           flexDirection: 'column',
           justifyContent: 'center',
           backgroundColor: '#0F163B',
         }}
       >
-          <Typography 
+          <Typography component="div"
           sx={{
             fontFamily: '"Nunito", sans-serif',  
             fontWeight: '1000',
@@ -136,7 +136,7 @@ function LoginPage() {
             fontSize: { xs: '30px', sm: '40px', md: '50px' }, 
           }}>
             Attendify <br />
-            <Typography 
+            <Typography component="span"
             sx={{
               fontFamily: '"Open Sans", sans-serif',  
               fontWeight: '600',
@@ -162,13 +162,18 @@ function LoginPage() {
         <Paper
           elevation={5}
           sx={{
-            flex: { xs: 1, sm: 1.5, md: 1.5 },
-            padding: 4,
+            flex: { sm: 1.5, md: 1.5 },
+            padding: { xs: 2, sm: 3, md: 4 }, // Padding yang responsif
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             backgroundColor: '#EDF1F7',
             borderRadius: '16px',
+            maxWidth: { xs: '100%', sm: '400px', md: '500px' }, // Maksimal lebar box
+            height: { xs: '50%', sm: '85%', md: '97%' }, // Tinggi responsif
+            margin: '0 auto', // Center alignment
+            minHeight: '200px', // Minimum tinggi untuk memastikan tampilannya tidak terlalu kecil
+            flexGrow: 1, // Biarkan elemen ini tumbuh dengan layar
           }}
         >
           <img 
@@ -185,7 +190,7 @@ function LoginPage() {
             fontFamily: '"Nunito", sans-serif',  
             fontWeight: '1000',
             color: '#0F163B',
-            fontSize: { xs: '20px', sm: '25px', md: '28px' }, 
+            fontSize: { xs: '18px', sm: '25px', md: '28px' }, 
           }}>
             Welcome Back!
           </Typography>
@@ -203,7 +208,7 @@ function LoginPage() {
             sx={{
               fontFamily: '"Nunito", sans-serif',
               fontWeight: '600',
-              fontSize: '16px', 
+              fontSize: { xs: '14px', sm: '16px', md: '16px' } ,
               color: '#0F163B',
               marginTop: 2,
             }}
@@ -219,7 +224,12 @@ function LoginPage() {
               required
               sx={{
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: '8px', // Menambahkan border radius
+                  borderRadius: '8px', // Border radius seperti kode atas
+                  height: { xs: 40, sm: 50 }, // Tinggi responsif seperti kode atas
+                },
+                '& .MuiInputBase-input': {
+                  padding: { xs: '8px 14px', sm: '10px 16px' }, // Padding responsif
+                  fontSize: { xs: '14px', sm: '16px' }, // Font size responsif
                 },
               }}
             />
@@ -227,7 +237,7 @@ function LoginPage() {
               sx={{
                 fontFamily: '"Nunito", sans-serif',
                 fontWeight: '600',
-                fontSize: '16px', 
+                fontSize: { xs: '14px', sm: '16px', md: '16px' } , 
                 color: '#0F163B',
                 marginTop: 2,
               }}
@@ -237,14 +247,19 @@ function LoginPage() {
             <TextField
               type="password"
               value={password}
-              placeholder='Enter your password'
+              placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
               fullWidth
               margin="normal"
               required
               sx={{
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: '8px', // Menambahkan border radius
+                  borderRadius: '8px', // Border radius seperti kode atas
+                  height: { xs: 40, sm: 50 }, // Tinggi responsif seperti kode atas
+                },
+                '& .MuiInputBase-input': {
+                  padding: { xs: '8px 14px', sm: '10px 16px' }, // Padding responsif
+                  fontSize: { xs: '14px', sm: '16px' }, // Font size responsif
                 },
               }}
             />
@@ -256,10 +271,11 @@ function LoginPage() {
                 sx={{
                   marginTop: 2,
                   height: '48px',
-                  width: { xs: '80%', sm: '60%', md: '40%' },
+                  width: { xs: '60%', sm: '60%', md: '40%' },
                   backgroundColor: '#0F163B',
                   borderRadius: '8px',
                   fontFamily: 'Nunito',
+                  fontSize: { xs: '12px', sm: '16px' },
                   color: 'white', // Mengatur warna teks tombol
                   '&:hover': {
                     backgroundColor: '#4e89cd', // Menjaga warna saat hover

@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/": "pages/index.js",
   "/login": "pages/login.js",
   "/profil": "pages/profil.js",
-  "/registrasi-pegawai": "pages/registrasi-pegawai.js",
   "/daftar-pegawai": "pages/daftar-pegawai.js"
 }

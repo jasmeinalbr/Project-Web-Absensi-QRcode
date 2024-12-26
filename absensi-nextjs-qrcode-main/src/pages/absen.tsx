@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Fab, Typography } from '@mui/material';
+import { Box, Container, Fab, Paper, Typography } from '@mui/material';
 import { QrCodeScanner, Stop } from '@mui/icons-material';
 import QrScanner from 'qr-scanner';
 import Layout from '@/components/Layout';
@@ -60,38 +60,80 @@ const AbsensiScanner: React.FC = () => {
 
   return (
     <Layout>
-      <Box p="20px"
-        display="flex"
-        width="100%"
-        justifyContent="center">
-        {btnScan === false && (
-          <video
-            id="scanView"
-            style={{
-              width: '100%',
-              maxWidth: '400px',
-              height: '100%',
-              maxHeight: '400px',
-              borderStyle: 'dotted',
-            }}
-          ></video>
-        )}
-        {btnScan && (
-          <Typography variant="h6">
-            Hasil Absen:
-            <br />
-            {hasilAbsen}
-          </Typography>
-        )}
-        <Fab
-          color={btnScan ? 'primary' : 'secondary'}
-          onClick={() => scanNow(!btnScan)}
-          sx={{ position: 'absolute', bottom: 16, right: 16 }}
+      <Container maxWidth="sm" sx={{ padding: 4 }}>
+        <Paper
+          elevation={6}
+          sx={{
+            padding: 4,
+            borderRadius: '16px',
+            boxShadow: 'black',
+            backgroundColor: 'white',
+            textAlign: 'center',
+          }}
         >
-          {btnScan && <QrCodeScanner />}
-          {btnScan === false && <Stop />}
-        </Fab>
-      </Box>
+          {btnScan === false && (
+            <video
+              id="scanView"
+              style={{
+                width: '100%',
+                maxWidth: '400px',
+                height: '100%',
+                maxHeight: '400px',
+                borderStyle: 'dotted',
+                borderRadius: '16px',
+              }}
+            ></video>
+          )}
+          {btnScan && (
+            <Box
+              sx={{
+                padding: 4,
+                borderRadius: '16px',
+                backgroundColor: '#4e89cd',
+                color: 'white',
+                textAlign: 'center',
+                marginBottom: 3,
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontFamily: '"Nunito", sans-serif',
+                  fontWeight: '600',
+                  fontSize: '20px',
+                  marginBottom: '12px',
+                }}
+              >
+                Attendance Result :
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontFamily: 'Open Sans',
+                  fontWeight: '400',
+                  fontSize: '16px',
+                }}
+              >
+                {hasilAbsen || 'Please scan the QR Code to attend'}
+              </Typography>
+            </Box>
+          )}
+          <Fab
+            color={btnScan ? 'primary' : 'secondary'}
+            onClick={() => scanNow(!btnScan)}
+            sx={{
+              position: 'absolute',
+              bottom: 16,
+              right: 16,
+              boxShadow: 3,
+            }}
+          >
+            {btnScan && <QrCodeScanner />}
+            {btnScan === false && <Stop />}
+          </Fab>
+        </Paper>
+      </Container>
     </Layout>
   );
 };
